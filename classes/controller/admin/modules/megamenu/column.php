@@ -66,7 +66,7 @@ class Controller_Admin_Modules_Megamenu_Column extends Controller_Admin_Modules_
 			));
 		}
 		if ($this->is_cancel) {
-			Request::current()->redirect($list_url);
+			Request::current()->redirect($this->back_url);
 		}
 
 		$errors = array();
@@ -100,15 +100,17 @@ class Controller_Admin_Modules_Megamenu_Column extends Controller_Admin_Modules_
 				$this->left_menu_column_add();
 			}
 			if ( (bool) $id) {
-				$this->left_menu_row_add($id);
-				$this->left_menu_row_fix($id);
+				$back_url = $this->request->current()->url().'#tab-rows';
+				
+				$this->left_menu_row_add($id, urlencode($back_url));
+				$this->left_menu_row_fix($id, urlencode($back_url));
 				
 				$subrequest_link = Route::url('modules', array(
 					'controller' => 'megamenu_row',
 					'query' => Helper_Page::make_query_string(array(
 						'page' => $this->module_page_id,
 						'column' => $id,
-						'back_url' => $this->request->current()->url().'#tab-rows',
+						'back_url' => $back_url,
 					)),
 				));
 				
@@ -226,7 +228,7 @@ class Controller_Admin_Modules_Megamenu_Column extends Controller_Admin_Modules_
 						$query_array[ Paginator::QUERY_PARAM ] = $p;
 					}
 				}
-				$list_url = Route::url('modules', array(
+				$this->back_url = Route::url('modules', array(
 					'controller' => 'megamenu_column',
 					'query' => Helper_Page::make_query_string($query_array),
 				));

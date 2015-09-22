@@ -60,9 +60,8 @@ class Controller_Admin_Modules_Megamenu extends Controller_Admin_Front {
 		));
 	}
 	
-	protected function left_menu_row_add($column_id)
+	protected function left_menu_row_add($column_id, $back_url)
 	{
-		$back_url = $this->request->current()->url();
 		$this->_ex_menu_items = array_merge_recursive($this->_ex_menu_items, array(
 			'megamenu' => array(
 				'sub' => array(
@@ -79,9 +78,8 @@ class Controller_Admin_Modules_Megamenu extends Controller_Admin_Front {
 		));
 	}
 	
-	protected function left_menu_row_fix($column_id)
+	protected function left_menu_row_fix($column_id, $back_url)
 	{
-		$back_url = $this->request->current()->url();
 		$this->_ex_menu_items = array_merge_recursive($this->_ex_menu_items, array(
 			'fix' => array(
 				'title' => __('Fix positions'),

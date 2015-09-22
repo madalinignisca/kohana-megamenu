@@ -44,8 +44,11 @@ class Controller_Admin_Modules_Megamenu_Row extends Controller_Admin_Modules_Meg
 		$acl_edit = $this->acl->is_allowed($this->user, $orm, 'edit');
 		$this->left_menu_column_add();
 		if ($acl_edit) {
-			$this->left_menu_row_add($this->column->id);
-			$this->left_menu_row_fix($this->column->id);
+			$back_url = empty($this->back_url)
+				? $this->request->current()->url()
+				: $this->back_url;
+			$this->left_menu_row_add($this->column->id, $back_url);
+			$this->left_menu_row_fix($this->column->id, $back_url);
 		}
 		
 		$this->title = __('Columns list');
@@ -122,8 +125,11 @@ class Controller_Admin_Modules_Megamenu_Row extends Controller_Admin_Modules_Meg
 			$this->left_menu_column_add();
 			$acl_edit = $this->acl->is_allowed($this->user, $orm, 'edit');
 			if ($acl_edit) {
-				$this->left_menu_row_add($this->column->id);
-				$this->left_menu_row_fix($this->column->id);
+				$back_url = empty($this->back_url)
+					? $this->request->current()->url()
+					: $this->back_url;
+				$this->left_menu_row_add($this->column->id, $back_url);
+				$this->left_menu_row_fix($this->column->id, $back_url);
 			}
 			
 			$this->template
