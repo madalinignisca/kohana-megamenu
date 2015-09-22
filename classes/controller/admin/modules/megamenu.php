@@ -7,6 +7,13 @@ class Controller_Admin_Modules_Megamenu extends Controller_Admin_Front {
 	protected $top_menu_item = 'modules';
 	protected $sub_title = 'Megamenu';
 
+	protected function get_module_pages($module_key)
+	{
+		return ORM::factory('page')
+			->where('megamenu', '>', 0)
+			->find_all();
+	}
+	
 	protected function get_aside_view()
 	{
 		$menu_items = array_merge_recursive(
