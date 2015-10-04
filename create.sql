@@ -1,4 +1,4 @@
-CREATE TABLE `prefix_megamenu_columns` (
+CREATE TABLE `megamenu_columns` (
 	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 	`page_id` INT(10) UNSIGNED NOT NULL DEFAULT '0',
 	`title` VARCHAR(255) NOT NULL DEFAULT '',
@@ -22,7 +22,7 @@ CREATE TABLE `prefix_megamenu_columns` (
 COLLATE='utf8_general_ci'
 ENGINE=MyISAM;
 
-CREATE TABLE `prefix_megamenu_rows` (
+CREATE TABLE `megamenu_rows` (
 	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 	`column_id` INT(10) UNSIGNED NOT NULL DEFAULT '0',
 	`title` VARCHAR(255) NOT NULL DEFAULT '',
